@@ -1,7 +1,11 @@
 package epson.khumplang.wannipa.epsontraffic;
 
+import android.content.Intent;
+import android.media.MediaPlayer;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 
@@ -20,8 +24,29 @@ public class MainActivity extends AppCompatActivity {
         //Bind Widget
         bindWidge();
 
+        //Button Controller
+        buttonController();
+
 
     }   // Main Method
+
+    private void buttonController() {
+
+        aboutMeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                //Sound effect
+                MediaPlayer buttonMediaPlayer = MediaPlayer.create(getBaseContext(),R.raw.bird);
+                buttonMediaPlayer.start();
+
+                //Intent to WebView
+                Intent objIntent = new Intent(Intent.ACTION_VIEW);
+                objIntent.setData(Uri.parse("https://youtu.be/tkXOKkxc0BA"));startActivity(objIntent);
+            }
+        });
+
+    }
 
     private void bindWidge() {
 
